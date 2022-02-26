@@ -24,27 +24,7 @@ push bx
 mov bx, 0008h
 int 10h
 pop bx
-inc bl
-cmp bl, 083h
-jle next
 jmp again
-
-next:
-mov bx, 0000h
-again2:
-mov ah, 00h
-int 16h
-mov al, bl
-add al, 7fh
-mov ah, 0eh
-push bx
-mov bx, 0007h
-int 10h
-pop bx
-inc bl
-cmp bl, 0ffh
-jle finish
-jmp again2
 
 finish:
 mov bx, 0005h

@@ -2,5 +2,5 @@
 fasm ./boot.asm ./boot.o
 dd if=./boot.o of=/dev/sdc
 fasm ./kernel.asm ./kernel.o
-dd if=./kernel.o of=/dev/sdc seek=1
-qemu-system-x86_64 -fda /dev/sdc
+dd if=./kernel.o of=./image.img seek=1
+qemu-system-x86_64 -fda ./image.img
