@@ -1,6 +1,6 @@
 #!/bin/bash
+dd if=/dev/zero of=./floppy.img count=128
+mkfs.fat -F 12 ./floppy.img
 fasm ./boot.asm ./boot.o
-dd if=./boot.o of=/dev/sdc
-fasm ./kernel.asm ./kernel.o
-dd if=./kernel.o of=./image.img seek=1
-qemu-system-x86_64 -fda ./image.img
+dd if=./boot.o of=./floppy.img conv=notrunc
+qemu-system-x86_64 -fda ./floppy.img
